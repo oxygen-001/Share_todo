@@ -1,0 +1,27 @@
+type Todo {
+  id: Int
+  title: String
+  text: String
+  isCompleted: Boolean
+}
+
+type Query {
+  todos: [Todo]
+}
+
+type TodoResponse {
+  success: Boolean
+  data: Any
+}
+
+type Mutation {
+  addTodo(title: String, text: String, isCompleted: Boolean): TodoResponse
+  deleteTodo(id: Int!): String
+  editTodo(
+    id: Int!
+    text: String!
+    title: String!
+    isCompleted: Boolean!
+  ): String
+  sendTodo(id: Int!, sendTo: Int!): String
+}

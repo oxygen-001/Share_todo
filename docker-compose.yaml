@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    command: sh -c "npm install & npm run dev"
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: todo
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:

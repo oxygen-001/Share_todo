@@ -1,0 +1,22 @@
+scalar Any
+
+type User {
+  username: String!
+  id: Int!
+  todos: [Todo]
+}
+
+type Query {
+  user: [User!]
+}
+
+type Response {
+  success: Boolean
+  data: Any
+  access_token: String
+}
+
+type Mutation {
+  signUp(username: String!, password: String!): Response
+  singIn(username: String!, password: String!): Response
+}
